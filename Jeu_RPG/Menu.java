@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Menu {
     public String keyboardScan;
 
-    public void startGame() { /**função de introdução do jogo com opções de criar personnagem ou sair*/
+    public String startGame() { /**função de introdução do jogo com opções de criar personnagem ou sair*/
         String finalOption = null;
         System.out.println("Welcome to the Dungeons and Dragons adventure!");
         System.out.println("Should we begin?");
@@ -13,18 +13,17 @@ public class Menu {
         } while (!(keyboardScan.equals("C") || keyboardScan.equals("Q")));
         if (keyboardScan.equals("C")) {
             System.out.println("Ok! Let's create your character!");
-            finalOption = keyboardScan;
         } else if (keyboardScan.equals("Q")) {
             System.out.println("Are you sure you want to quit (Y/N)?");
             Scanner keyboard2 = new Scanner(System.in);
             keyboardScan = keyboard2.nextLine().toUpperCase();
             if (keyboardScan.equals("Y")) {
                 System.out.println("Ok, see you next time!");
-                finalOption = keyboardScan;
             }
-            System.out.println(finalOption);
         }
+        return keyboardScan;
     }
+
 
     public String scanKeyboard() {
         String optionChoosed;
