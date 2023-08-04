@@ -17,8 +17,8 @@ public class Warrior {
 
     public Warrior(String name, int life, int attack) {
         this.name = name;
-        this.life = 10;
-        this.attack = 10;
+        this.life = life;
+        this.attack = attack;
     }
 
     public void createWarrior(Menu menu) {
@@ -32,6 +32,7 @@ public class Warrior {
         menu.keyboardScan = menu.scanKeyboard();
         this.attack = Integer.parseInt(menu.keyboardScan);
         System.out.println("Welcome to life, " + this.name + "! Are you ready to start?");
+        System.out.println("Let's go!");
     }
 }
 

@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7449ce72-20f0-4f26-89a2-ad0c10a909cf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Test Scanner/.idea/Test Scanner.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Test Scanner/out/production/Test Scanner/.idea/Test Scanner.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jeu_RPG/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Jeu_RPG/Character.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Jeu_RPG/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Jeu_RPG/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jeu_RPG/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Jeu_RPG/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Jeu_RPG/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Jeu_RPG/Warrior.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Jeu_RPG/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Jeu_RPG/Wizard.java" afterDir="false" />
     </list>
@@ -32,20 +26,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/silva/Documents/JAVA/test2",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/silva/Documents/JAVA/test2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -56,6 +50,7 @@
       <updated>1691133942266</updated>
       <workItem from="1691133943260" duration="19000" />
       <workItem from="1691133987328" duration="749000" />
+      <workItem from="1691141327395" duration="1036000" />
     </task>
     <servers />
   </component>
