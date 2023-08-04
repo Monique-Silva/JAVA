@@ -2,13 +2,20 @@ public class Main {
     public static void main(String[] args) {
         Menu menu = new Menu();
         menu.startGame();
-        menu.createCharacter();  /** problema: quando o jogador sai do jogo, essa função da escolha do personagem roda */
+        Warrior warrior = null;
+        Wizard wizard = null;
+        /** criar uma condição com o retorno do stargame pra continuaR ou não o jogo */
+        Character character = new Character();
+        String characterChoosed = character.createCharacter(); /** problema: quando o jogador sai do jogo, essa função da escolha do personagem roda */
+        if (characterChoosed.equals("Warrior")) {
+            warrior = new Warrior();
+            warrior.createWarrior(menu);
+        } else if (characterChoosed.equals("Wizard")) {
+            wizard = new Wizard();
+            wizard.createWizard();
+        }
 
-        character
-        Wizard wizard = new Wizard();
-        wizard.createWizard();
-        /** chamar a função do personagem se for o caso, tem que passar essa chamada pro menu, mesma coisa com warrior */
-        Warrior warrior = new Warrior();
+
 
         /** chamar todas as funções conforme necessidade */
     }

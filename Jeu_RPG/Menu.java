@@ -1,45 +1,33 @@
 import java.util.Scanner;
 
 public class Menu {
+    public String keyboardScan;
     public void startGame() { /**função de introdução do jogo com opções de criar personnagem ou sair*/
         System.out.println("Welcome to the Dungeons and Dragons adventure!");
         System.out.println("Should we begin?");
-        String optionChoosed;
         do {
-            System.out.println("Please choose an option: Create new character (Y) / Quit (Q)");
-            Scanner keyboard = new Scanner(System.in);
-            optionChoosed = keyboard.nextLine().toUpperCase();
-        } while (!(optionChoosed.equals("Y") || optionChoosed.equals("Q")));
-        if (optionChoosed.equals("Y")) {
+            System.out.println("Please choose an option: Create new character(C) / Quit(Q)");
+            keyboardScan = scanKeyboard();
+        } while (!(keyboardScan.equals("C") || keyboardScan.equals("Q")));
+        if (keyboardScan.equals("C")) {
             System.out.println("Ok! Let's create your character!");
-        } else if (optionChoosed.equals("Q")) {
+        } else if (keyboardScan.equals("Q")) {
             System.out.println("Are you sure you want to quit (Y/N)?");
             Scanner keyboard2 = new Scanner(System.in);
-            optionChoosed = keyboard2.nextLine().toUpperCase();
-            if (optionChoosed.equals("Y")) {
+            keyboardScan = keyboard2.nextLine().toUpperCase();
+            if (keyboardScan.equals("Y")) {
                 System.out.println("Ok, see you next time!");
             }
         }
     }
-
-    public void createCharacter() {
-        String character;
-        do {
-            System.out.println("Choose your character: Warrior (WR) or Wizard (WZ)");
-            Scanner keyboard = new Scanner(System.in);
-            character = keyboard.nextLine().toUpperCase();
-        } while (!(character.equals("WR") || character.equals("WZ")));
-        if(character.equals("WR")) {
-            character = "Warrior";
-        }
-        else if(character.equals("WZ")) {
-            character = "Wizard";
-        }
-        System.out.println(" A " + character + "? Good choice!");
+    public String scanKeyboard() {
+        String optionChoosed;
+        Scanner keyboard = new Scanner(System.in);
+        optionChoosed = keyboard.nextLine().toUpperCase();
+        return optionChoosed;
     }
-    }
+}
 /**
- * criar função createCharacter()
  * criar função modificar personagem
  * <p>
  * Classe pra estruturar o jogo, utilizando funções:
