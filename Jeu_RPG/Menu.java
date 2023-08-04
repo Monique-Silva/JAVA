@@ -6,7 +6,7 @@ public class Menu {
         System.out.println("Should we begin?");
         String optionChoosed;
         do {
-            System.out.println("Please choose an option: Create new character (type Y) / Quit (type Q)");
+            System.out.println("Please choose an option: Create new character (Y) / Quit (Q)");
             Scanner keyboard = new Scanner(System.in);
             optionChoosed = keyboard.nextLine().toUpperCase();
         } while (!(optionChoosed.equals("Y") || optionChoosed.equals("Q")));
@@ -22,10 +22,10 @@ public class Menu {
         }
     }
 
-    public String createCharacter() {
+    public void createCharacter() {
         String character;
         do {
-            System.out.println("Choose your character: Warrior (type WR) or Wizard (type WZ)");
+            System.out.println("Choose your character: Warrior (WR) or Wizard (WZ)");
             Scanner keyboard = new Scanner(System.in);
             character = keyboard.nextLine().toUpperCase();
         } while (!(character.equals("WR") || character.equals("WZ")));
@@ -35,7 +35,7 @@ public class Menu {
         else if(character.equals("WZ")) {
             character = "Wizard";
         }
-        return character;
+        System.out.println(" A " + character + "? Good choice!");
     }
     }
 /**
