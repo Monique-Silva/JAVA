@@ -29,12 +29,21 @@ public class Wizard {
         return this.name;
     }
 
+    public void setWizardName(String name) {
+        this.name = name;
+    }
+
     public int getWizardLife() {
         return this.life;
+    }
+    public void setWizardLife(int life) {
+        this.life = life;
     }
 
     public int getWizardAttack() {
         return this.attack;
     }
-
+    public void setWizardAttack(int attack) {
+        this.attack = attack;
+    }
 }
