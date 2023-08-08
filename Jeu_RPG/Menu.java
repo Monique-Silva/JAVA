@@ -2,20 +2,24 @@ import java.util.Scanner;
 
 public class Menu {
     private String keyboardScan;
+    public Warrior warrior = null;
+    public Wizard wizard = null;
+    public String characterChosen;
 
     public String startGame() {
-        String characterChosen = " ";
         System.out.println("Welcome to the Dungeons and Dragons adventure!");
         System.out.println("Should we begin?");
-        do {
-            System.out.println("Please choose an option:");
-            System.out.println("Create new character(C)");
-            System.out.println("Show character information(S)");
-            System.out.println("Modify your character(M)");
-            System.out.println("Play(P)");
-            System.out.println("Quit(Q)");
-            keyboardScan = scanKeyboard();
-        } while (!(keyboardScan.equals("C") || keyboardScan.equals("S") || keyboardScan.equals("M") || keyboardScan.equals("P") || keyboardScan.equals("Q")));
+        //while(!(keyboardScan.equals("Q"))){
+            do {
+                System.out.println("Please choose an option:");
+                System.out.println("Create new character(C)");
+                System.out.println("Show character information(S)");
+                System.out.println("Modify your character(M)");
+                System.out.println("Play(P)");
+                System.out.println("Quit(Q)");
+                keyboardScan = scanKeyboard();
+            } while (!(keyboardScan.equals("C") || keyboardScan.equals("S") || keyboardScan.equals("M") || keyboardScan.equals("P") || keyboardScan.equals("Q")));
+        //}
         if (keyboardScan.equals("C")) {
             System.out.println("Ok! Let's create your character!");
             characterChosen = this.chooseCharacter(); /** instanciar objetos dentro dessa função */
@@ -48,11 +52,15 @@ public class Menu {
                 character = keyboard.nextLine().toUpperCase();
             } while (!(character.equals("WR") || character.equals("WZ") || character.equals("Q")));
             if (character.equals("WR")) {
+                warrior = new Warrior();
                 character = "Warrior";
                 System.out.println("A " + character + "? Good choice!");
+                this.createWarrior(warrior);
             } else if (character.equals("WZ")) {
+                wizard = new Wizard();
                 character = "Wizard";
                 System.out.println("A " + character + "? Good choice!");
+                this.createWizard(wizard);
             } else if (character.equals("Q")) {
                 toQuit();
             }
@@ -60,28 +68,28 @@ public class Menu {
         }
 
         public void createWarrior (Warrior warrior){
-            String warriorName = warrior.getWarriorName();
-            int warriorLife = warrior.getWarriorLife();
-            int warriorAttack = warrior.getWarriorAttack();
-            String warriorWeapon = warrior.getWeapon();
-            String warriorShield = warrior.getShield();
+            //String warriorWeapon = warrior.getWeapon();
+            //String warriorShield = warrior.getShield();
             System.out.println("How do you want to call your warrior?");
             keyboardScan = scanKeyboard();
-            warriorName = keyboardScan;
+            warrior.setWarriorName(keyboardScan);
+            String warriorName = warrior.getWarriorName();
             System.out.println("Choose your life points (5-10):");
             keyboardScan = scanKeyboard();
-            warriorLife = Integer.parseInt(keyboardScan);
+            warrior.setWarriorLife(Integer.parseInt(keyboardScan));
+            int warriorLife = warrior.getWarriorLife();
             System.out.println("Choose your attack points (5-10):");
             keyboardScan = scanKeyboard();
-            warriorAttack = Integer.parseInt(keyboardScan);
+            warrior.setWarriorAttack(Integer.parseInt(keyboardScan));
+            int warriorAttack = warrior.getWarriorAttack();
             System.out.println("Welcome to life, " + warriorName + "! Are you ready to start?");
             System.out.println("Let's go!");
             System.out.println("This is you:");
             System.out.println("Name: " + warriorName);
             System.out.println("Life points: " + warriorLife);
             System.out.println("Attack points: " + warriorAttack);
-            System.out.println("Weapon: " + warriorWeapon);
-            System.out.println("Filter: " + warriorShield);
+            //System.out.println("Weapon: " + warriorWeapon);
+            //System.out.println("Filter: " + warriorShield);
             //menuShowInfo();
         }
 
