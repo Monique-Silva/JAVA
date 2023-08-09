@@ -9,7 +9,7 @@ public class Menu {
     public String startGame() {
         System.out.println("Welcome to the Dungeons and Dragons adventure!");
         System.out.println("Should we begin?");
-        //while(!(keyboardScan.equals("Q"))){
+        do {
             do {
                 System.out.println("Please choose an option:");
                 System.out.println("Create new character(C)");
@@ -19,7 +19,6 @@ public class Menu {
                 System.out.println("Quit(Q)");
                 keyboardScan = scanKeyboard();
             } while (!(keyboardScan.equals("C") || keyboardScan.equals("S") || keyboardScan.equals("M") || keyboardScan.equals("P") || keyboardScan.equals("Q")));
-        //}
         if (keyboardScan.equals("C")) {
             System.out.println("Ok! Let's create your character!");
             characterChosen = this.chooseCharacter(); /** instanciar objetos dentro dessa função */
@@ -32,9 +31,10 @@ public class Menu {
                 toQuit();
             }
             return keyboardScan;
+        } while(!(keyboardScan.equals("Q")));
         }
 
-        public String scanKeyboard () {
+        public String scanKeyboard() {
             String optionChosen;
             Scanner keyboard = new Scanner(System.in);
             optionChosen = keyboard.nextLine().toUpperCase();
@@ -61,6 +61,7 @@ public class Menu {
                 character = "Wizard";
                 System.out.println("A " + character + "? Good choice!");
                 this.createWizard(wizard);
+
             } else if (character.equals("Q")) {
                 toQuit();
             }
