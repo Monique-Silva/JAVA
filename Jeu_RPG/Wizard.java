@@ -1,5 +1,5 @@
 
-public class Wizard {
+public class Wizard extends Character {
     private String name;
     private int life;
     private int attack;

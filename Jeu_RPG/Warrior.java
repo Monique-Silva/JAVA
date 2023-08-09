@@ -1,7 +1,7 @@
-public class Warrior {
-    private String name;
-    private int life;
-    private int attack;
+public class Warrior extends Character {
+    //private String name;
+    //private int life;
+    //private int attack;
     private Weapon weapon;
     private Weapon shield;
 
