@@ -133,22 +133,5 @@ public class Menu {
                     keyboardScan = startGame();
             }
         }
-
-        public void menuShowInfo () {
-            System.out.println("What do you want to do now?");
-            System.out.println("Play (P)");
-            System.out.println("Change character (C)");
-            System.out.println("Quit (Q)");
-            keyboardScan = scanKeyboard();
-            switch (keyboardScan) {
-                case "P":
-                    //continuação;
-                case "C":
-                    chooseCharacter();
-                case "Q":
-                    toQuit();
-            }
-
-        }
     }
 
