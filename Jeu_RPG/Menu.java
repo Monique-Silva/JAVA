@@ -10,6 +10,23 @@ public class Menu {
         System.out.println("Welcome to the Dungeons and Dragons adventure!");
         System.out.println("Should we begin?");
         do {
+            this.showMenu();
+        if (keyboardScan.equals("C")) {
+            System.out.println("Ok! Let's create your character!");
+            characterChosen = this.chooseCharacter(); /** instanciar objetos dentro dessa função */
+
+        } else if (keyboardScan.equals("S")) {
+            /** criar função this.showInfo(); */
+        } else if (keyboardScan.equals("M")) {
+            System.out.println(characterChosen); //appeler la function modifier character
+            } else if (keyboardScan.equals("Q")) {
+                toQuit();
+            }
+            return keyboardScan;
+        } while(!(keyboardScan.equals("Q")));
+        }
+
+        public void showMenu() {
             do {
                 System.out.println("Please choose an option:");
                 System.out.println("Create new character(C)");
@@ -19,21 +36,7 @@ public class Menu {
                 System.out.println("Quit(Q)");
                 keyboardScan = scanKeyboard();
             } while (!(keyboardScan.equals("C") || keyboardScan.equals("S") || keyboardScan.equals("M") || keyboardScan.equals("P") || keyboardScan.equals("Q")));
-        if (keyboardScan.equals("C")) {
-            System.out.println("Ok! Let's create your character!");
-            characterChosen = this.chooseCharacter(); /** instanciar objetos dentro dessa função */
-
-        } else if (keyboardScan.equals("S")) {
-            /** criar função this.showInfo(); */
-        } else if (keyboardScan.equals("M")) {
-            System.out.println(characterChosen);
-            } else if (keyboardScan.equals("Q")) {
-                toQuit();
-            }
-            return keyboardScan;
-        } while(!(keyboardScan.equals("Q")));
         }
-
         public String scanKeyboard() {
             String optionChosen;
             Scanner keyboard = new Scanner(System.in);
