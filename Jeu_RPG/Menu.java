@@ -12,7 +12,7 @@ public class Menu {
         System.out.println("Welcome to the Dungeons and Dragons adventure!");
         System.out.println("Should we begin?");
         do {
-            this.showMenu();
+            this.showMenu2();
             switch (keyboardScan) {
                 case "C" -> {
                     System.out.println("Ok! Let's create your character!");
@@ -22,8 +22,7 @@ public class Menu {
                     this.showInfo();
                 }
                 case "M" -> {
-                    //switch
-                    //this.modifyCharacter(characterChosen);appeler la function modifier character
+                    this.modifyCharacter();
                 }
                 case "Q" -> {
                     toQuit();
@@ -32,7 +31,7 @@ public class Menu {
         } while (!(keyboardScan.equals("Q")));
     }
 
-    public void showMenu() {
+    public void showMenu2() {
         do {
             System.out.println("Please choose an option:");
             System.out.println("Create new character(C)");
@@ -152,13 +151,20 @@ public class Menu {
         }
     }
 
-    modifyCharacter() {
+    public void modifyCharacter() {
         switch (characterChosen) {
             case "Warrior" -> {
                 System.out.println("Name: " + warrior.getWarriorName());
-                String name = warrior.getWarriorName();
-
+                keyboardScan = scanKeyboard();
+                warrior.setWarriorName(keyboardScan);
+                System.out.println("Name: " + warrior.getWarriorName());
                 System.out.println("Life points: " + warrior.getWarriorLife());
+                keyboardScan = scanKeyboard();
+                warrior.setWarriorLife(Integer.parseInt(keyboardScan));
+                System.out.println("Life points: " + warrior.getWarriorLife());
+                System.out.println("Attack points: " + warrior.getWarriorAttack());
+                keyboardScan = scanKeyboard();
+                warrior.setWarriorAttack(Integer.parseInt(keyboardScan));
                 System.out.println("Attack points: " + warrior.getWarriorAttack());
             }
             //System.out.println("Weapon: " + warrior.getWeapon());
