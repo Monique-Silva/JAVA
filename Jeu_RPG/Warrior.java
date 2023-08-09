@@ -9,6 +9,7 @@ public class Warrior {
         this.name = " ";
         this.life = 0;
         this.attack = 0;
+        this.weapon = null;
         //this.weapon = new Weapon();
     }
 
