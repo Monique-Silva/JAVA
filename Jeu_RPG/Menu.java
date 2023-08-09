@@ -167,15 +167,20 @@ public class Menu {
                 warrior.setWarriorAttack(Integer.parseInt(keyboardScan));
                 System.out.println("Attack points: " + warrior.getWarriorAttack());
             }
-            //System.out.println("Weapon: " + warrior.getWeapon());
-            //System.out.println("Shield: " + warrior.getShield());
             case "Wizard" -> {
                 System.out.println("Name: " + wizard.getWizardName());
+                keyboardScan = scanKeyboard();
+                wizard.setWizardName(keyboardScan);
+                System.out.println("Name: " + wizard.getWizardName());
+                System.out.println("Life points: " + wizard.getWizardLife());
+                keyboardScan = scanKeyboard();
+                wizard.setWizardLife(Integer.parseInt(keyboardScan));
                 System.out.println("Life points: " + wizard.getWizardLife());
                 System.out.println("Attack points: " + wizard.getWizardAttack());
+                keyboardScan = scanKeyboard();
+                wizard.setWizardAttack(Integer.parseInt(keyboardScan));
+                System.out.println("Attack points: " + wizard.getWizardAttack());
             }
-            //System.out.println("Spell: " + wizard.getSpell());
-            //System.out.println("Filter: " + wizard.getFilter());
         }
     }
 }
