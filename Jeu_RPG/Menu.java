@@ -13,16 +13,21 @@ public class Menu {
         System.out.println("Should we begin?");
         do {
             this.showMenu();
-            if (keyboardScan.equals("C")) {
-                System.out.println("Ok! Let's create your character!");
-                characterChosen = this.chooseCharacter(); /** instanciar objetos dentro dessa função */
-
-            } else if (keyboardScan.equals("S")) {
-                this.showInfo(characterChosen);
-            } else if (keyboardScan.equals("M")) {
-                System.out.println(characterChosen); //appeler la function modifier character
-            } else if (keyboardScan.equals("Q")) {
-                toQuit();
+            switch (keyboardScan) {
+                case "C" -> {
+                    System.out.println("Ok! Let's create your character!");
+                    characterChosen = this.chooseCharacter();
+                }
+                case "S" -> {
+                    this.showInfo();
+                }
+                case "M" -> {
+                    //switch
+                    //this.modifyCharacter(characterChosen);appeler la function modifier character
+                }
+                case "Q" -> {
+                    toQuit();
+                }
             }
         } while (!(keyboardScan.equals("Q")));
     }
@@ -56,19 +61,22 @@ public class Menu {
             Scanner keyboard = new Scanner(System.in);
             character = keyboard.nextLine().toUpperCase();
         } while (!(character.equals("WR") || character.equals("WZ") || character.equals("Q")));
-        if (character.equals("WR")) {
-            warrior = new Warrior();
-            character = "Warrior";
-            System.out.println("A " + character + "? Good choice!");
-            this.createWarrior(warrior, characterChosen);
-        } else if (character.equals("WZ")) {
-            wizard = new Wizard();
-            character = "Wizard";
-            System.out.println("A " + character + "? Good choice!");
-            this.createWizard(wizard);
-
-        } else if (character.equals("Q")) {
-            toQuit();
+        switch (character) {
+            case "WR" -> {
+                warrior = new Warrior();
+                character = "Warrior";
+                System.out.println("A " + character + "? Good choice!");
+                this.createWarrior(warrior, characterChosen);
+            }
+            case "WZ" -> {
+                wizard = new Wizard();
+                character = "Wizard";
+                System.out.println("A " + character + "? Good choice!");
+                this.createWizard(wizard);
+            }
+            case "Q" -> {
+                toQuit();
+            }
         }
         return character;
     }
@@ -81,11 +89,9 @@ public class Menu {
         System.out.println("Choose your life points (5-10):");
         keyboardScan = scanKeyboard();
         warrior.setWarriorLife(Integer.parseInt(keyboardScan));
-        warrior.getWarriorLife();
         System.out.println("Choose your attack points (5-10):");
         keyboardScan = scanKeyboard();
         warrior.setWarriorAttack(Integer.parseInt(keyboardScan));
-        warrior.getWarriorAttack();
         System.out.println("Welcome to life, " + warriorName + "! Are you ready to start?");
         System.out.println("Let's go!");
     }
@@ -107,7 +113,7 @@ public class Menu {
         wizardAttack = Integer.parseInt(keyboardScan);
         System.out.println("Welcome to life, " + wizardName + "! Are you ready to start?");
         System.out.println("Let's go!");
-        this.showInfo(characterChosen);
+        this.showInfo();
     }
 
     public void toQuit() {
@@ -115,31 +121,56 @@ public class Menu {
         Scanner keyboard2 = new Scanner(System.in);
         keyboardScan = keyboard2.nextLine().toUpperCase();
         switch (keyboardScan) {
-            case "Y":
+            case "Y" -> {
                 System.out.println("Ok, see you next time!");
                 System.exit(0);
-            case "N":
+            }
+            case "N" -> {
                 System.out.println("Ok, let's start from the beginning.");
                 this.startGame();
+            }
         }
     }
 
-    public void showInfo(String characterChosen) {
+    public void showInfo() {
         System.out.println("This is you:");
         switch (characterChosen) {
-            case "Warrior":
+            case "Warrior" -> {
                 System.out.println("Name: " + warrior.getWarriorName());
                 System.out.println("Life points: " + warrior.getWarriorLife());
                 System.out.println("Attack points: " + warrior.getWarriorAttack());
-                //System.out.println("Weapon: " + warrior.getWeapon());
-                //System.out.println("Shield: " + warrior.getShield());
-            case "Wizard":
+            }
+            //System.out.println("Weapon: " + warrior.getWeapon());
+            //System.out.println("Shield: " + warrior.getShield());
+            case "Wizard" -> {
                 System.out.println("Name: " + wizard.getWizardName());
                 System.out.println("Life points: " + wizard.getWizardLife());
                 System.out.println("Attack points: " + wizard.getWizardAttack());
-                //System.out.println("Spell: " + wizard.getSpell());
-                //System.out.println("Filter: " + wizard.getFilter());
+            }
+            //System.out.println("Spell: " + wizard.getSpell());
+            //System.out.println("Filter: " + wizard.getFilter());
         }
     }
+
+    modifyCharacter() {
+        switch (characterChosen) {
+            case "Warrior" -> {
+                System.out.println("Name: " + warrior.getWarriorName());
+                String name = warrior.getWarriorName();
+
+                System.out.println("Life points: " + warrior.getWarriorLife());
+                System.out.println("Attack points: " + warrior.getWarriorAttack());
+            }
+            //System.out.println("Weapon: " + warrior.getWeapon());
+            //System.out.println("Shield: " + warrior.getShield());
+            case "Wizard" -> {
+                System.out.println("Name: " + wizard.getWizardName());
+                System.out.println("Life points: " + wizard.getWizardLife());
+                System.out.println("Attack points: " + wizard.getWizardAttack());
+            }
+            //System.out.println("Spell: " + wizard.getSpell());
+            //System.out.println("Filter: " + wizard.getFilter());
+        }
     }
+}
 
