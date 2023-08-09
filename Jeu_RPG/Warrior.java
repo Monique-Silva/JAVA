@@ -27,27 +27,27 @@ public class Warrior extends Character {
         //this.weapon = new Weapon();
     }
 
-    public String getWarriorName() {
+    public String getName() {
         return this.name;
     }
 
-    public void setWarriorName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public int getWarriorLife() {
+    public int getLife() {
         return this.life;
     }
 
-    public void setWarriorLife(int life) {
+    public void setLife(int life) {
         this.life = life;
     }
 
-    public int getWarriorAttack() {
+    public int getAttack() {
         return this.attack;
     }
 
-    public void setWarriorAttack(int attack) {
+    public void setAttack(int attack) {
         this.attack = attack;
     }
 

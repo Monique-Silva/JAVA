@@ -25,25 +25,25 @@ public class Wizard extends Character {
         this.spell = new Spell();
     }
 
-    public String getWizardName() {
+    public String getName() {
         return this.name;
     }
 
-    public void setWizardName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public int getWizardLife() {
+    public int getLife() {
         return this.life;
     }
-    public void setWizardLife(int life) {
+    public void setLife(int life) {
         this.life = life;
     }
 
-    public int getWizardAttack() {
+    public int getAttack() {
         return this.attack;
     }
-    public void setWizardAttack(int attack) {
+    public void setAttack(int attack) {
         this.attack = attack;
     }
 }
