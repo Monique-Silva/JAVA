@@ -1,3 +1,4 @@
+/**
 public class Weapon {
 
 
@@ -45,3 +46,4 @@ public class Weapon {
         this.shield = shield;
     }
 }
+ */
