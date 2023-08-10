@@ -8,7 +8,7 @@ public class Menu {
     private Spell spell;
     private String characterChosen;
 
-    public Menu () {
+    public Menu() {
         this.keyboardScan = null;
         this.warrior = null;
         this.wizard = null;
@@ -19,55 +19,54 @@ public class Menu {
 
 
     public void startGame() {
+        //Character w = new Warrior("Eric");
+        //System.out.println(w.getName());
+        //System.exit(0);
+
+
         System.out.println("Welcome to the Dungeons and Dragons adventure!");
         System.out.println("Should we begin?");
         this.showMenu1();
         do {
             this.showMenu2();
             switch (keyboardScan) {
-                case "N" -> {
-                    System.out.println("Ok! Let's create your character!");
-                    characterChosen = this.chooseCharacter();
-                }
-                case "S" -> {
+                case "I" -> {
                     this.showInfo();
                 }
                 case "M" -> {
                     this.modifyCharacter();
                 }
                 case "Q" -> {
-                    toQuit();
+                    this.toQuit();
                 }
             }
         } while (!(keyboardScan.equals("Q")));
     }
 
     public void showMenu1() {
-        do {
-            System.out.println("Please choose an option:");
-            System.out.println("Start(S)");
-            System.out.println("Quit(Q)");
-            keyboardScan = scanKeyboard();
-            switch (keyboardScan) {
-                case "S" -> {
-                    this.showMenu2();
-                }
-                case "Q" -> {
-                    this.toQuit();
-                }
+        System.out.println("Menu:");
+        System.out.println("Create character(C)"); /** trocar start por criar personagem */
+        System.out.println("Quit(Q)");
+        keyboardScan = scanKeyboard();
+        switch (keyboardScan) {
+            case "C" -> {
+                characterChosen = this.chooseCharacter();
             }
-        } while (!(keyboardScan.equals("S") || keyboardScan.equals("Q")));
+            case "Q" -> {
+                this.toQuit();
+            }
+        }
     }
+
     public void showMenu2() {
         do {
-            System.out.println("Please choose an option:");
-            System.out.println("Create new character(N)");
-            System.out.println("Show character information(S)");
+            System.out.println("Menu:");
+            System.out.println("Show character information(I)");
             System.out.println("Modify your character(M)");
             System.out.println("Play(P)");
             System.out.println("Quit(Q)");
             keyboardScan = scanKeyboard();
-        } while (!(keyboardScan.equals("N") || keyboardScan.equals("S") || keyboardScan.equals("M") || keyboardScan.equals("P") || keyboardScan.equals("Q")));
+        } while (!(keyboardScan.equals("I") || keyboardScan.equals("M") || keyboardScan.equals("P") || keyboardScan.equals("Q")));
     }
 
     public String scanKeyboard() {
@@ -80,6 +79,7 @@ public class Menu {
     public String chooseCharacter() {
         String character;
         do {
+            System.out.println("Ok! Let's create your character!");
             System.out.println("Choose your character:");
             System.out.println("Warrior(WR)");
             System.out.println("Wizard(WZ)");
@@ -93,6 +93,7 @@ public class Menu {
                 character = "Warrior";
                 System.out.println("A " + character + "? Good choice!");
                 this.createWarrior(warrior, characterChosen);
+                //warrior.createCharacter();
             }
             case "WZ" -> {
                 wizard = new Wizard();

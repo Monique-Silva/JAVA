@@ -5,5 +5,4 @@ abstract class Character {
     protected int life;
     protected int attack;
 
-    public abstract void showCharacter();
 }
