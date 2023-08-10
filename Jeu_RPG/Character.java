@@ -6,10 +6,6 @@ abstract class Character {
     protected int life;
     protected int attack;
 
-    public void toWalk() {
-        System.out.println("I'm just walking");
-    }
-
     public Character() {
         this.name = " ";
         this.life = 0;

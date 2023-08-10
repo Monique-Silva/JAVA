@@ -19,4 +19,20 @@ public class Warrior extends Character {
         this.weapon = "Sword";
         this.shield = "Wooden shield";
     }
+
+    public String getWeapon() {
+        return this.weapon;
+    }
+
+    public void setWeapon(String name) {
+        this.weapon = weapon;
+    }
+
+    public String getShield() {
+        return this.shield;
+    }
+
+    public void setShield(String name) {
+        this.shield = shield;
+    }
 }

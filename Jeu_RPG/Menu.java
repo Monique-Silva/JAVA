@@ -3,16 +3,14 @@ import java.util.Scanner;
 public class Menu {
     private String keyboardScan;
     private Character avatar;
-    //private Weapon weapon;
-    //private Spell spell;
-    private String characterChosen;
+    private String character;
 
     public Menu() {
         this.keyboardScan = null;
         this.avatar = null;
         //this.weapon = null;
         //this.spell = null;
-        this.characterChosen = null;
+        this.character = null;
     }
 
 
@@ -43,7 +41,7 @@ public class Menu {
         keyboardScan = scanKeyboard();
         switch (keyboardScan) {
             case "C" -> {
-                characterChosen = this.chooseCharacter();
+                character = this.chooseCharacter();
             }
             case "Q" -> {
                 this.toQuit();
@@ -104,7 +102,6 @@ public class Menu {
         System.out.println("How do you want to call your " + this.avatar + "?");
         keyboardScan = scanKeyboard();
         avatar.setName(keyboardScan);
-        avatar.getName();
         System.out.println("Choose your life points (5-10):");
         keyboardScan = scanKeyboard();
         avatar.setLife(Integer.parseInt(keyboardScan));
@@ -136,7 +133,7 @@ public class Menu {
         System.out.println("Name: " + avatar.getName());
         System.out.println("Life points: " + avatar.getLife());
         System.out.println("Attack points: " + avatar.getAttack());
-        switch (characterChosen) {
+        switch (character) {
             case "Warrior" -> {
                 //System.out.println("Weapon: " + avatar.getWeapon());
                 //System.out.println("Shield: " + avatar.getShield());
@@ -164,7 +161,7 @@ public class Menu {
         keyboardScan = scanKeyboard();
         avatar.setAttack(Integer.parseInt(keyboardScan));
         System.out.println("Attack points: " + avatar.getAttack());
-        switch (characterChosen) {
+        switch (character) {
             case "Warrior" -> {
                 /** adaptar os pontos life e attack */
             }
