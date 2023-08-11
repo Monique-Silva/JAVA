@@ -24,7 +24,7 @@ public class Warrior extends Character {
         return this.weapon;
     }
 
-    public void setWeapon(String name) {
+    public void setWeapon(String weapon) {
         this.weapon = weapon;
     }
 
@@ -32,7 +32,7 @@ public class Warrior extends Character {
         return this.shield;
     }
 
-    public void setShield(String name) {
+    public void setShield(String shield) {
         this.shield = shield;
     }
 

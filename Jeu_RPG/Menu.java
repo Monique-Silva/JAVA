@@ -8,8 +8,6 @@ public class Menu {
     public Menu() {
         this.keyboardScan = null;
         this.avatar = null;
-        //this.weapon = null;
-        //this.spell = null;
         this.character = null;
     }
 
@@ -136,16 +134,6 @@ public class Menu {
 
     public void showInfo() {
         System.out.println("This is you:\n" + avatar);
-        switch (character) {
-            case "warrior" -> {
-                //System.out.println("Weapon: " + avatar.getWeapon());
-                //System.out.println("Shield: " + avatar.getShield());
-            }
-            case "wizard" -> {
-                //System.out.println("Spell: " + avatar.getSpell());
-                //System.out.println("Filter: " + avatar.getFilter());
-            }
-        }
     }
 
     public void modifyCharacter() {
