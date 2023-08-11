@@ -35,4 +35,11 @@ public class Warrior extends Character {
     public void setShield(String name) {
         this.shield = shield;
     }
+
+    public String toString() {
+        String convertedToStr = super.toString() + "\n";
+        convertedToStr += "Weapon: " + this.getWeapon() + "\n";
+        convertedToStr += "Shield: " + this.getShield();
+        return convertedToStr;
+    }
 }

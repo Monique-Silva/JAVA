@@ -48,4 +48,12 @@ abstract class Character {
         this.attack = attack;
     }
 
+
+    public String toString() {
+        String convertedToStr;
+        convertedToStr = "Name: " + this.getName() + "\n";
+        convertedToStr += "Life points: " + this.getLife() + "\n";
+        convertedToStr += "Attack points: " + this.getAttack();
+        return convertedToStr;
+    }
 }

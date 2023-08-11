@@ -15,8 +15,7 @@ public class Menu {
 
 
     public void startGame() {
-        System.out.println("Welcome to the Dungeons and Dragons adventure!");
-        System.out.println("Should we begin?");
+        System.out.println("Welcome to the Dungeons and Dragons adventure!\nShould we begin?");
         this.showMenu1();
         do {
             this.showMenu2();
@@ -35,9 +34,7 @@ public class Menu {
     }
 
     public void showMenu1() {
-        System.out.println("Menu:");
-        System.out.println("Create character(C)");
-        System.out.println("Quit(Q)");
+        System.out.println("Menu:\nCreate character(C)\nQuit(Q)");
         keyboardScan = scanKeyboard();
         switch (keyboardScan) {
             case "C" -> {
@@ -51,11 +48,7 @@ public class Menu {
 
     public void showMenu2() {
         do {
-            System.out.println("Menu:");
-            System.out.println("Show character information(I)");
-            System.out.println("Modify your character(M)");
-            System.out.println("Play(P)");
-            System.out.println("Quit(Q)");
+            System.out.println("Menu:\nShow character information(I)\nModify your character(M)\nPlay(P)\nQuit(Q)");
             keyboardScan = scanKeyboard();
         } while (!(keyboardScan.equals("I") || keyboardScan.equals("M") || keyboardScan.equals("P") || keyboardScan.equals("Q")));
     }
@@ -70,26 +63,22 @@ public class Menu {
     public String chooseCharacter() {
         String character;
         do {
-            System.out.println("Ok! Let's create your character!");
-            System.out.println("Choose your character:");
-            System.out.println("Warrior(WR)");
-            System.out.println("Wizard(WZ)");
-            System.out.println("Quit(Q)");
+            System.out.println("Ok! Let's create your character!\nChoose your character:\nWarrior(WR)\nWizard(WZ)\nQuit(Q)");
             Scanner keyboard = new Scanner(System.in);
             character = keyboard.nextLine().toUpperCase();
         } while (!(character.equals("WR") || character.equals("WZ") || character.equals("Q")));
         switch (character) {
             case "WR" -> {
                 avatar = new Warrior();
-                character = "Warrior";
+                character = "warrior";
                 System.out.println("A " + character + "? Good choice!");
-                this.createCharacter();
+                this.createCharacter(character);
             }
             case "WZ" -> {
                 avatar = new Wizard();
-                character = "Wizard";
+                character = "wizard";
                 System.out.println("A " + character + "? Good choice!");
-                this.createCharacter();
+                this.createCharacter(character);
             }
             case "Q" -> {
                 toQuit();
@@ -98,18 +87,35 @@ public class Menu {
         return character;
     }
 
-    public void createCharacter() {
-        System.out.println("How do you want to call your " + this.avatar + "?");
+    public void createCharacter(String character) {
+        System.out.println("How do you want to call your " + character + "?");
         keyboardScan = scanKeyboard();
         avatar.setName(keyboardScan);
-        System.out.println("Choose your life points (5-10):");
+        switch (character) {
+            case "warrior" -> {
+                defineLevel("life", 5, 10);
+            }
+            case "wizard" -> {
+                defineLevel("life", 3, 6);
+            }
+        }
         keyboardScan = scanKeyboard();
         avatar.setLife(Integer.parseInt(keyboardScan));
-        System.out.println("Choose your attack points (5-10):");
+        switch (character) {
+            case "warrior" -> {
+                defineLevel("attack", 5, 10);
+            }
+            case "wizard" -> {
+                defineLevel("attack", 8, 15);
+            }
+        }
         keyboardScan = scanKeyboard();
         avatar.setAttack(Integer.parseInt(keyboardScan));
-        System.out.println("Welcome to life, " + avatar.getName() + "! Are you ready to start?");
-        System.out.println("Let's go!");
+        System.out.println("Welcome to life, " + avatar.getName() + "! Are you ready to start?\nLet's go!");
+    }
+
+    public void defineLevel(String points, int min, int max) {
+        System.out.println("Choose your " + points + " points (" + min + "-" + max + "):");
     }
 
     public void toQuit() {
@@ -129,16 +135,13 @@ public class Menu {
     }
 
     public void showInfo() {
-        System.out.println("This is you:");
-        System.out.println("Name: " + avatar.getName());
-        System.out.println("Life points: " + avatar.getLife());
-        System.out.println("Attack points: " + avatar.getAttack());
+        System.out.println("This is you:\n" + avatar);
         switch (character) {
-            case "Warrior" -> {
+            case "warrior" -> {
                 //System.out.println("Weapon: " + avatar.getWeapon());
                 //System.out.println("Shield: " + avatar.getShield());
             }
-            case "Wizard" -> {
+            case "wizard" -> {
                 //System.out.println("Spell: " + avatar.getSpell());
                 //System.out.println("Filter: " + avatar.getFilter());
             }
@@ -146,29 +149,31 @@ public class Menu {
     }
 
     public void modifyCharacter() {
-        System.out.println("Name: " + avatar.getName());
-        System.out.println("New name:");
+        do {
+        System.out.println("What do you want to change?\n" + avatar + "\nName(N)\nLife Points(L)\nAttack points(A)\nBack to menu(B)");
         keyboardScan = scanKeyboard();
-        avatar.setName(keyboardScan);
-        System.out.println("Name: " + avatar.getName());
-        System.out.println("Life points: " + avatar.getLife());
-        System.out.println("New life points:");
-        keyboardScan = scanKeyboard();
-        avatar.setLife(Integer.parseInt(keyboardScan));
-        System.out.println("Life points: " + avatar.getLife());
-        System.out.println("Attack points: " + avatar.getAttack());
-        System.out.println("New attack points:");
-        keyboardScan = scanKeyboard();
-        avatar.setAttack(Integer.parseInt(keyboardScan));
-        System.out.println("Attack points: " + avatar.getAttack());
-        switch (character) {
-            case "Warrior" -> {
-                /** adaptar os pontos life e attack */
+            switch (keyboardScan) {
+                case "N":
+                    System.out.println("New name:");
+                    keyboardScan = scanKeyboard();
+                    avatar.setName(keyboardScan);
+                    break;
+                case "L":
+                    System.out.println("New life points:");
+                    keyboardScan = scanKeyboard();
+                    avatar.setLife(Integer.parseInt(keyboardScan));
+                    break;
+                case "A":
+                    System.out.println("New attack points:");
+                    keyboardScan = scanKeyboard();
+                    avatar.setAttack(Integer.parseInt(keyboardScan));
+                    break;
+                case "B":
+                    this.showMenu2();
             }
-            case "Wizard" -> {
-                /** adaptar os pontos life e attack */
-            }
-        }
+            System.out.println("Do you want to change anything else?(Y/N)");
+            keyboardScan = scanKeyboard();
+        } while(! keyboardScan.equals("N"));
     }
 }
 
