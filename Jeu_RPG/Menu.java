@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class Menu {
     private String keyboardScan;
     private Character avatar;
@@ -23,6 +22,9 @@ public class Menu {
                 }
                 case "M" -> {
                     this.modifyCharacter();
+                }
+                case "P" -> {
+                    this.toPlay();
                 }
                 case "Q" -> {
                     this.toQuit();
@@ -162,6 +164,13 @@ public class Menu {
             System.out.println("Do you want to change anything else?(Y/N)");
             keyboardScan = scanKeyboard();
         } while(! keyboardScan.equals("N"));
+    }
+
+    public void toPlay() {
+        System.out.println("Here we go!\nPlay your dice");
+        Random random = new Random();
+        dice.nextInt(upperbound)
+
     }
 }
 
