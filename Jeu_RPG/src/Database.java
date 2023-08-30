@@ -9,20 +9,15 @@ import java.sql.*;
 public class Database {
     private static Connection connection; //objet pour se connecter a la base de données
 
-    //etape 1. chargement du driver:
-    private Database() throws Exception {
-        InputStream in = ClassLoader.getSystemClassLoader().getResourceAsStream(".env");
-        Properties prop = new Properties();
-        prop.load(in);
-
-        Class.forName("com.mysql.jdbc.Driver");
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jeurpg", prop.getProperty("database.username"), prop.getProperty("database.password"));
-    }
-
-    public static Connection getInstance() {
+    public static Connection getConnection() {
         if (connection == null) {
             try {
-                new Database();
+                InputStream in = ClassLoader.getSystemClassLoader().getResourceAsStream(".env");
+                Properties prop = new Properties();
+                prop.load(in);
+
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                connection = DriverManager.getConnection("jdbc:mysql://localhost/Heroes", prop.getProperty("database.username"), prop.getProperty("database.password"));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -32,27 +27,32 @@ public class Database {
 
     //etape 2. connexion à la base:
     public static List<Character> getCharacter() throws SQLException {
-        List<Character> heroes = new ArrayList<Character>(); //initialisation de l'objet hero
-        Statement statement; //objet pour faire la requete sql
-        ResultSet result; //represente le resultat pour etre manipulé
+        List<Character> heroes = new ArrayList<Character>(); //initialisation de la liste des hero
 
-
-        statement = connection.createStatement();
+        Statement statement = getConnection().createStatement();
 
         //etape 3. execution de la requete:
-        result = statement.executeQuery("SELECT * FROM hero;");
+        ResultSet result = statement.executeQuery("SELECT * FROM `Character`;");
 
         //etape 4. recuperation des données:
         while (result.next()) {
+            Character character = null;
             String type = result.getString("type");
-            String nom = result.getString("nom");
-            Integer niveauVie = result.getInt("niveauVie");
-            Integer niveauForce = result.getInt("niveauForce");
-            String armeOUsort = result.getString("armeOUsort");
-            String bouclier = result.getString("bouclier");
-            Character character;
+            if (type.equals("Warrior")) {
+                character = new Warrior(result.getString("name"), result.getInt("life"), result.getInt("attack"));
+            }
+            if (type.equals("Wizard")) {
+                character = new Wizard(result.getString("name"), result.getInt("life"), result.getInt("attack"));
+            }
+            String name = result.getString("name");
+            Integer life = result.getInt("life");
+            Integer attack = result.getInt("attack");
+            String power = result.getString("power");
+            String shield = result.getString("shield");
+
             heroes.add(character);
         }
-    return heroes;
+
+        return heroes;
     }
 }

@@ -1,6 +1,9 @@
 package src;
-
-
+import java.io.InputStream;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
 import java.util.Scanner;
 public class Menu {
     private String keyboardScan;
@@ -13,7 +16,7 @@ public class Menu {
         this.character = null;
     }
 
-    public void startGame() {
+    public void startGame() throws SQLException {
         System.out.println("Welcome to the Dungeons and Dragons adventure!\nShould we begin?");
         this.showMenu1();
         do {
@@ -35,7 +38,7 @@ public class Menu {
         } while (!(keyboardScan.equals("Q")));
     }
 
-    public void showMenu1() {
+    public void showMenu1() throws SQLException {
         System.out.println("Menu:\nChoose character(C)\nQuit(Q)");
         keyboardScan = scanKeyboard();
         switch (keyboardScan) {
@@ -62,18 +65,21 @@ public class Menu {
         return optionChosen;
     }
 
-    public String chooseCharacter() {
-        String character;
+    public String chooseCharacter() throws SQLException {
+        String characterChosen;
         do {
-            System.out.println("Ok! Let's choose your character:\nWarrior(WR)\nWizard(WZ)\nQuit(Q)");
+            System.out.println("Ok! Let's choose your character:");
+            List<Character> character = Database.getCharacter();
+            for (int i = 0; i < character.size(); i++) {
+                System.out.println(character.get(i));
+            }
+            System.out.println("Choose an option: She-Ra(WR), Hermione(WZ) or Quit(Q)");
             Scanner keyboard = new Scanner(System.in);
-            character = keyboard.nextLine().toUpperCase();
-        } while (!(character.equals("WR") || character.equals("WZ") || character.equals("Q")));
-        switch (character) {
+            characterChosen = keyboard.nextLine().toUpperCase();
+        } while (!(characterChosen.equals("WR") || characterChosen.equals("WZ") || characterChosen.equals("Q")));
+        switch (characterChosen) {
             case "WR" -> {
-                avatar = new Warrior();
-                character = "warrior";
-                System.out.println("A " + character + "? Good choice!");
+                System.out.println( /*trouver comment insérer le name du personnage ici */ "Good choice!");
                 this.createCharacter(character);
             }
             case "WZ" -> {
@@ -120,7 +126,7 @@ public class Menu {
         System.out.println("Choose your " + points + " points (" + min + "-" + max + "):");
     }
 
-    public void toQuit() {
+    public void toQuit() throws SQLException {
         System.out.println("Are you sure you want to quit (Y/N)?");
         Scanner keyboard2 = new Scanner(System.in);
         keyboardScan = keyboard2.nextLine().toUpperCase();
