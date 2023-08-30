@@ -1,17 +1,15 @@
-import src.Character; //probleme de syntaxe, voir avec Johann
-import src.Database;
-import src.Menu;
+package src;
 
-import java.sql.SQLException;
+import java.io.InputStream;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws Exception {
+
         Menu menu = new Menu();
         menu.startGame();
-        List<Character> character = Database.getCharacter();
-        //Warrior warrior = new Warrior();
-        //warrior.play();
     }
 }
