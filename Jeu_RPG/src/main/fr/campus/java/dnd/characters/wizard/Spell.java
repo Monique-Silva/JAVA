@@ -1,3 +1,5 @@
+package src.main.fr.campus.java.dnd.characters.wizard;
+
 public class Spell {
     private String spell;
     private int attack;

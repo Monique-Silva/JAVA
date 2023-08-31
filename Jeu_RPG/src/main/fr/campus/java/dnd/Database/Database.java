@@ -1,4 +1,8 @@
-package src;
+package src.main.fr.campus.java.dnd.Database;
+
+import src.main.fr.campus.java.dnd.characters.Hero;
+import src.main.fr.campus.java.dnd.characters.warrior.Warrior;
+import src.main.fr.campus.java.dnd.characters.wizard.Wizard;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -26,23 +30,23 @@ public class Database {
     }
 
     //etape 2. connexion à la base:
-    public static List<Character> getCharacter() throws SQLException {
-        List<Character> heroes = new ArrayList<Character>(); //initialisation de la liste des hero
+    public static List<Hero> getHero() throws SQLException {
+        List<Hero> heroes = new ArrayList<Hero>(); //initialisation de la liste des hero
 
         Statement statement = getConnection().createStatement();
 
         //etape 3. execution de la requete:
-        ResultSet result = statement.executeQuery("SELECT * FROM `Character`;");
+        ResultSet result = statement.executeQuery("SELECT * FROM Hero;");
 
         //etape 4. recuperation des données:
         while (result.next()) {
-            Character character = null;
+            Hero hero = null;
             String type = result.getString("type");
             if (type.equals("Warrior")) {
-                character = new Warrior(result.getString("name"), result.getInt("life"), result.getInt("attack"));
+                hero = new Warrior(result.getString("name"), result.getInt("life"), result.getInt("attack"));
             }
             if (type.equals("Wizard")) {
-                character = new Wizard(result.getString("name"), result.getInt("life"), result.getInt("attack"));
+                hero = new Wizard(result.getString("name"), result.getInt("life"), result.getInt("attack"));
             }
             String name = result.getString("name");
             Integer life = result.getInt("life");
@@ -50,7 +54,7 @@ public class Database {
             String power = result.getString("power");
             String shield = result.getString("shield");
 
-            heroes.add(character);
+            heroes.add(hero);
         }
 
         return heroes;

@@ -1,26 +1,24 @@
-package src;
+package src.main.fr.campus.java.dnd.characters;
 
-import java.util.Scanner;
-
-abstract class Character {
+public abstract class Hero {
     //public String keyboardScan;
     protected String name;
     protected int life;
     protected int attack;
 
-    public Character() {
+    public Hero() {
         this.name = " ";
         this.life = 0;
         this.attack = 0;
     }
 
-    public Character(String name) {
+    public Hero(String name) {
         this.name = name;
         this.life = 0;
         this.attack = 0;
     }
 
-    public Character(String name, int life, int attack) {
+    public Hero(String name, int life, int attack) {
         this.name = name;
         this.life = life;
         this.attack = attack;

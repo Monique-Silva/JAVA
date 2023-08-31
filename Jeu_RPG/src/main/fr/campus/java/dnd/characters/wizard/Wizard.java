@@ -1,6 +1,7 @@
-package src;
+package src.main.fr.campus.java.dnd.characters.wizard;
+import src.main.fr.campus.java.dnd.characters.Hero;
 
-public class Wizard extends Character {
+public class Wizard extends Hero {
     public String spell;
     public String filter;
 

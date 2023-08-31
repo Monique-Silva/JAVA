@@ -1,6 +1,8 @@
-package src;
+package src.main.fr.campus.java.dnd.characters.warrior;
 
-public class Warrior extends Character {
+import src.main.fr.campus.java.dnd.characters.Hero;
+
+public class Warrior extends Hero {
     private String weapon;
     private String shield;
 

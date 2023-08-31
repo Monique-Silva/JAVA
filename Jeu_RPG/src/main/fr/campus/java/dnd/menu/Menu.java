@@ -1,4 +1,8 @@
-package src;
+package src.main.fr.campus.java.dnd.menu;
+import src.main.fr.campus.java.dnd.Database.Database;
+import src.main.fr.campus.java.dnd.characters.Hero;
+import src.main.fr.campus.java.dnd.characters.wizard.Wizard;
+
 import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
@@ -7,13 +11,13 @@ import java.util.Properties;
 import java.util.Scanner;
 public class Menu {
     private String keyboardScan;
-    private Character avatar;
-    private String character;
+    private Hero avatar;
+    private String hero;
 
     public Menu() {
         this.keyboardScan = null;
         this.avatar = null;
-        this.character = null;
+        this.hero = null;
     }
 
     public void startGame() throws SQLException {
@@ -26,7 +30,7 @@ public class Menu {
                     this.showInfo();
                 }
                 case "M" -> {
-                    this.modifyCharacter();
+                    this.modifyHero();
                 }
                 case "P" -> {
                     //this.toPlay();
@@ -43,7 +47,7 @@ public class Menu {
         keyboardScan = scanKeyboard();
         switch (keyboardScan) {
             case "C" -> {
-                character = this.chooseCharacter();
+                hero = this.chooseHero();
             }
             case "Q" -> {
                 this.toQuit();
@@ -65,41 +69,41 @@ public class Menu {
         return optionChosen;
     }
 
-    public String chooseCharacter() throws SQLException {
-        String characterChosen;
+    public String chooseHero() throws SQLException {
+        String heroChosen;
         do {
             System.out.println("Ok! Let's choose your character:");
-            List<Character> character = Database.getCharacter();
-            for (int i = 0; i < character.size(); i++) {
-                System.out.println(character.get(i));
+            List<Hero> hero = Database.getHero();
+            for (int i = 0; i < hero.size(); i++) {
+                System.out.println(hero.get(i));
             }
             System.out.println("Choose an option: She-Ra(WR), Hermione(WZ) or Quit(Q)");
             Scanner keyboard = new Scanner(System.in);
-            characterChosen = keyboard.nextLine().toUpperCase();
-        } while (!(characterChosen.equals("WR") || characterChosen.equals("WZ") || characterChosen.equals("Q")));
-        switch (characterChosen) {
+            heroChosen = keyboard.nextLine().toUpperCase();
+        } while (!(heroChosen.equals("WR") || heroChosen.equals("WZ") || heroChosen.equals("Q")));
+        switch (heroChosen) {
             case "WR" -> {
                 System.out.println( /*trouver comment insérer le name du personnage ici */ "Good choice!");
-                this.createCharacter(character);
+                this.createHero(hero);
             }
             case "WZ" -> {
-                avatar = new Wizard();
-                character = "wizard";
-                System.out.println("A " + character + "? Good choice!");
-                this.createCharacter(character);
+                //avatar = new Wizard();
+                hero = "wizard";
+                System.out.println("A " + hero + "? Good choice!");
+                this.createHero(hero);
             }
             case "Q" -> {
                 toQuit();
             }
         }
-        return character;
+        return hero;
     }
 
-    public void createCharacter(String character) {
-        System.out.println("How do you want to call your " + character + "?");
+    public void createHero(String hero) {
+        System.out.println("How do you want to call your " + hero + "?");
         keyboardScan = scanKeyboard();
         avatar.setName(keyboardScan);
-        switch (character) {
+        switch (hero) {
             case "warrior" -> {
                 defineLevel("life", 5, 10);
             }
@@ -109,7 +113,7 @@ public class Menu {
         }
         keyboardScan = scanKeyboard();
         avatar.setLife(Integer.parseInt(keyboardScan));
-        switch (character) {
+        switch (hero) {
             case "warrior" -> {
                 defineLevel("attack", 5, 10);
             }
@@ -146,7 +150,7 @@ public class Menu {
         System.out.println("This is you:\n" + avatar);
     }
 
-    public void modifyCharacter() {
+    public void modifyHero() {
         do {
             System.out.println("What do you want to change?\n" + avatar + "\nName(N)\nLife Points(L)\nAttack points(A)\nBack to menu(B)");
             keyboardScan = scanKeyboard();

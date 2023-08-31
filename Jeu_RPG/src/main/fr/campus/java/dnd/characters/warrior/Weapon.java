@@ -1,4 +1,4 @@
-/**
+package src.main.fr.campus.java.dnd.characters.warrior;
 public class Weapon {
 
 
@@ -46,4 +46,3 @@ public class Weapon {
         this.shield = shield;
     }
 }
- */

@@ -1,4 +1,6 @@
-package src;
+package src.main.fr.campus.java.dnd;
+
+import src.main.fr.campus.java.dnd.menu.Menu;
 
 import java.io.InputStream;
 import java.sql.*;
